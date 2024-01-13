@@ -4,10 +4,10 @@ import { useRouter } from 'next/router';
 import {
   getModelDefinition,
   capitalizeAndRemoveLast,
-} from '@/librairy/utils';
+} from '../utils';
 
-import {GenericInputNumber} from "@/librairy/components/Form/GenericInputNumber";
-import {GenericInputText} from "@/librairy/components/Form/GenericInputText";
+import {GenericInputNumber} from "../components/Form/GenericInputNumber";
+import {GenericInputText} from "../components/Form/GenericInputText";
 
 type GenericFormProps = {
   entityName: string;

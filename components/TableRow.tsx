@@ -3,7 +3,7 @@ import Link from "next/link";
 import {
     getEditURLFor,
     getReadURLFor,
-} from "next-office-generator/utils";
+} from "../utils";
 
 interface TableRowProps {
     item: Record<string, any>;

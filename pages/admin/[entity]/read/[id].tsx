@@ -5,11 +5,11 @@ import Link from "next/link";
 
 import prisma from "@/prisma/prisma";
 
-import { GenericPageProps } from "next-office-generator/types/GenericProp";
+import { GenericPageProps } from "../types/GenericProp";
 import {
   capitalizeAndRemoveLast,
   getModelProperties,
-} from "next-office-generator/utils";
+} from "../utils";
 
 
 const GenericDetails: NextPage<GenericPageProps> = ({

@@ -1,5 +1,5 @@
-import { GenericEntityFront } from "next-office-generator/types/GenericModel";
-import { readJsonSchema } from "next-office-generator/utils";
+import { GenericEntityFront } from "../types/GenericModel";
+import { readJsonSchema } from "../utils";
 
 export async function getModelDefinition(modelName: string): Promise<GenericEntityFront> {
     const jsonModelData = await readJsonSchema();

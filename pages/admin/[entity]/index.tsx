@@ -3,14 +3,14 @@ import Head from "next/head";
 import Link from "next/link";
 
 import prisma from "@/prisma/prisma";
-import { TableContainer } from "next-office-generator/components/TableContainer";
-import { GenericPageProps } from "next-office-generator/types/GenericProp";
+import { TableContainer } from "../components/TableContainer";
+import { GenericPageProps } from "../types/GenericProp";
 
 import {
   getModelDefinition,
   capitalizeAndRemoveLast,
   getCreateURLFor,
-} from "next-office-generator/utils";
+} from "../utils";
 
 type IndexOptions = {};
 

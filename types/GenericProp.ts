@@ -1,4 +1,4 @@
-import { GenericEntityFront } from "@/librairy/interfaces/GenericModel";
+import { GenericEntityFront } from "./GenericModel";
 
 // TODO: Remoe the usage of this type, instead use a specific type for each admin/pages
 export interface  GenericPageProps {

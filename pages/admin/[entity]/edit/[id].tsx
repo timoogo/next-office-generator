@@ -4,11 +4,11 @@ import { NextPage } from 'next';
 
 import prisma from "@/prisma/prisma";
 
-import { GenericPageProps } from "next-office-generator/types/GenericProp";
+import { GenericPageProps } from "../types/GenericProp";
 import {
     capitalizeAndRemoveLast,
     getModelDefinition,
-} from "next-office-generator/utils";
+} from "../utils";
 
 const excludedFields = ['id', 'created_at', 'updated_at'];
 

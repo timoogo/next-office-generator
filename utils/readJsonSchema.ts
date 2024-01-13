@@ -1,6 +1,6 @@
 import path from "path";
 import {promises} from "fs";
-import { JsonModelData } from "next-office-generator/types/GenericModel";
+import { JsonModelData } from "../types/GenericModel";
 
 export async function readJsonSchema() {
     const jsonFilePath = path.join(process.cwd(), 'prisma/generated/json/json-schema.json');
