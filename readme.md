@@ -184,3 +184,93 @@ The following steps are necessary to generate the models from an existing databa
 7.  Go to `http://localhost:3000/admin/<your-model-name>` to see the generated admin interface.
 ## Roadmap
 - https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+
+
+## TODO next
+- [ ] Pages Admin & API
+- Exemple du contenu du fichier:
+```ts
+// File: pages/api/[entity].ts
+export * from 'next-office-generator/pages/api'; // API
+// File: pages/admin/create.ts
+// File: pages/admin/index.ts
+// File: pages/admin/edit/[id].ts
+// File: pages/admin/read/[id].ts
+export * from 'next-office-generator/pages/admin/create'; // Pages
+```
+- [ ] Components & Pages (Components) - Parser en es6
+Plus de copie des fichiers components dans le projet Next
+- [ ] Mise à jour du bin/ pour copier que ce qui est nécessaire
+- [ ] Simplification du prisma // Checker le problème de singleton prisma
+- [ ] Plus de copie des types (interne au package), pareil pour les utils
+- Expliquer pour quoi la css ne marchais pas
+
+#### Nice to have
+- [ ] Typage fort avec prisma (e.g. prisma[modelName])
+- [ ] Gestion de l'app router Next (utilisation de inquerer pour commande line), dans le bin/
+
+### Liens 
+| Lien                                                      | C'est quoi |
+|-----------------------------------------------------------|------------|
+| https://github.com/timoogo/next-office-generator.git      | Repository |
+| https://www.npmjs.com/package/next-office-generator       | NPM        |
+| https://github.com/timoogo/next-office-generator_demo.git | Demo       |
+
+
+### tailwind
+
+// tailwind.config.ts
+
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+    },
+  },
+  plugins: [],
+};
+export default config;
+
+
+
+
+
+// tsconfig.json
+
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}
