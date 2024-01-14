@@ -1,14 +1,15 @@
 import { ChangeEvent, FormEvent, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { NextPage } from 'next';
+import fs from 'fs';
 
 import prisma from "@/prisma/prisma";
 
-import { GenericPageProps } from "../types/GenericProp";
+import { GenericPageProps } from "../../../../types/GenericProp";
 import {
     capitalizeAndRemoveLast,
     getModelDefinition,
-} from "../utils";
+} from "../../../../utils";
 
 const excludedFields = ['id', 'created_at', 'updated_at'];
 
@@ -79,7 +80,7 @@ export async function getServerSideProps(params: ServerSideProps) {
     arrEntity.pop()
     const tableName = arrEntity.join('')
     const displayName = capitalizeAndRemoveLast(entity);
-    const modelEntity = await getModelDefinition(displayName);
+    const modelEntity = await getModelDefinition(fs, displayName);
 
     let formFields: string[] = [];
     let formFieldsTypes: Record<string, string> = {};

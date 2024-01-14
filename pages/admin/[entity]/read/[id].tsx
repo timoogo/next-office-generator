@@ -2,14 +2,15 @@ import { NextPage } from 'next';
 import React from 'react';
 import Head from 'next/head';
 import Link from "next/link";
+import fs from 'fs';
 
 import prisma from "@/prisma/prisma";
 
-import { GenericPageProps } from "../types/GenericProp";
+import { GenericPageProps } from "../../../../types/GenericProp";
 import {
   capitalizeAndRemoveLast,
   getModelProperties,
-} from "../utils";
+} from "../../../../utils";
 
 
 const GenericDetails: NextPage<GenericPageProps> = ({
@@ -61,7 +62,7 @@ export async function getServerSideProps(params: ServerSideProps) {
   arrEntity.pop()
   const tableName = arrEntity.join('')
   const displayName = capitalizeAndRemoveLast(entity);
-  const modelProperties = await getModelProperties(displayName);
+  const modelProperties = await getModelProperties(fs, displayName);
 
   // @ts-ignore
   const item = await prisma[tableName].findUnique({

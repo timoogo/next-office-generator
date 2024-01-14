@@ -1,13 +1,14 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import fs from 'fs';
 
 import {
   getModelDefinition,
   capitalizeAndRemoveLast,
-} from '../utils';
+} from '../../../utils';
 
-import {GenericInputNumber} from "../components/Form/GenericInputNumber";
-import {GenericInputText} from "../components/Form/GenericInputText";
+import {GenericInputNumber} from "../../../components/Form/GenericInputNumber";
+import {GenericInputText} from "../../../components/Form/GenericInputText";
 
 type GenericFormProps = {
   entityName: string;
@@ -136,7 +137,7 @@ export async function getServerSideProps(params: ServerSideProps) {
   const tableName = arrEntity.join('');
 
   // Schema
-  const modelEntity = await getModelDefinition(modelName);
+  const modelEntity = await getModelDefinition(fs, modelName);
 
   let formFields: string[] = [];
   let formFieldsTypes: Record<string, string> = {};

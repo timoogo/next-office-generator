@@ -1,8 +1,8 @@
 import { GenericEntityFront } from "../types/GenericModel";
 import { readJsonSchema } from "../utils";
 
-export async function getModelDefinition(modelName: string): Promise<GenericEntityFront> {
-    const jsonModelData = await readJsonSchema();
+export async function getModelDefinition(fs, modelName: string): Promise<GenericEntityFront> {
+    const jsonModelData = await readJsonSchema(fs);
 
     if (modelName in jsonModelData.definitions) {
         const modelDefinition = jsonModelData.definitions[modelName];
@@ -29,8 +29,8 @@ export async function getModelDefinition(modelName: string): Promise<GenericEnti
     throw new Error('Model not found');
 };
 
-export async function getModelProperties(modelName: string): Promise<string[]> {
-    const modelDefinition = await getModelDefinition(modelName);
+export async function getModelProperties(fs, modelName: string): Promise<string[]> {
+    const modelDefinition = await getModelDefinition(fs, modelName);
 
     if (modelDefinition) {
         return Object.keys(modelDefinition);

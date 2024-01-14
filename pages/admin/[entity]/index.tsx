@@ -1,16 +1,18 @@
 import React from "react";
 import Head from "next/head";
 import Link from "next/link";
+import fs from 'fs';
 
 import prisma from "@/prisma/prisma";
-import { TableContainer } from "../components/TableContainer";
-import { GenericPageProps } from "../types/GenericProp";
+import { TableContainer } from "../../../components/TableContainer";
+import { GenericPageProps } from "../../../types/GenericProp";
+
 
 import {
   getModelDefinition,
   capitalizeAndRemoveLast,
   getCreateURLFor,
-} from "../utils";
+} from "../../../utils";
 
 type IndexOptions = {};
 
@@ -64,7 +66,7 @@ export async function getServerSideProps(params: ServerSideProps) {
   const tableName = arrEntity.join('');
 
   // Schema
-  const modelEntity = await getModelDefinition(modelName);
+  const modelEntity = await getModelDefinition(fs, modelName);
 
   // TODO: Add this into the API as [entity] GET query all
   // @ts-ignore

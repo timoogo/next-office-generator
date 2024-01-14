@@ -1,10 +1,9 @@
 import path from "path";
-import {promises} from "fs";
 import { JsonModelData } from "../types/GenericModel";
 
-export async function readJsonSchema() {
+export async function readJsonSchema(fs) {
     const jsonFilePath = path.join(process.cwd(), 'prisma/generated/json/json-schema.json');
-    const jsonData = await promises.readFile(jsonFilePath, 'utf8');
+    const jsonData = fs.readFileSync(jsonFilePath, 'utf8');
     const jsonModelData: JsonModelData = JSON.parse(jsonData);
     return jsonModelData;
 }

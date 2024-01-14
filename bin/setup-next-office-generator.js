@@ -3,6 +3,10 @@ const fs = require('fs');
 const path = require('path');
 
 // Pages & API
+if (!fs.existsSync('src/pages')) {
+    fs.mkdirSync('src/pages');
+}
+
 console.log('Copying the pages and api');
 if (!fs.existsSync('src/pages/admin')) {
     fs.mkdirSync('src/pages/admin');
@@ -46,8 +50,8 @@ fs.copyFileSync(path.resolve(__dirname, '../components/TableRow.tsx'), 'src/comp
 if (!fs.existsSync('src/components/Form')) {
     fs.mkdirSync('src/components/Form');
 }
-fs.copyFileSync(path.resolve(__dirname, '../components/From/GenericInputNumber.tsx'), 'src/components/From/GenericInputNumber.tsx');
-fs.copyFileSync(path.resolve(__dirname, '../components/From/GenericInputText.tsx'), 'src/components/From/GenericInputText.tsx');
+fs.copyFileSync(path.resolve(__dirname, '../components/Form/GenericInputNumber.tsx'), 'src/components/Form/GenericInputNumber.tsx');
+fs.copyFileSync(path.resolve(__dirname, '../components/Form/GenericInputText.tsx'), 'src/components/Form/GenericInputText.tsx');
 
 // Types
 console.log('Copying types');

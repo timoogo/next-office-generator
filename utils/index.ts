@@ -1,11 +1,26 @@
 import capitalizeAndRemoveLast from './capitalizeAndRemoveLast';
 import { readJsonSchema } from './readJsonSchema';
-import * as routesHelpers from './routesHelpers';
-import * as getModelDefinition from './getModelDefinition';
+import {
+    getFrontendBaseURL,
+    getReadURLFor,
+    getEditURLFor,
+    getCreateURLFor,
+    getDeleteURLFor
+} from './routesHelpers';
+import {
+    getModelDefinition,
+    getModelProperties
+} from './getModelDefinition';
 
 export {
     capitalizeAndRemoveLast,
-    routesHelpers,
+    getFrontendBaseURL,
+    getReadURLFor,
+    getEditURLFor,
+    getCreateURLFor,
+    getDeleteURLFor,
     getModelDefinition,
+    getModelProperties,
     readJsonSchema,
+    
 };
