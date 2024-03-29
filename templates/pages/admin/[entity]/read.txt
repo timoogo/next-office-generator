@@ -1,0 +1,12 @@
+import prisma from '@/prisma/prisma';
+import {getReadView, getReadData} from 'next-office-generator';
+import type {AdminEntityReadServerSideProperties, AdminEntityReadOptions} from 'next-office-generator';
+
+export default function AdminEntityCreate(props: AdminEntityReadOptions) {
+  return getReadView()(props);
+}
+
+export async function getServerSideProps(params: AdminEntityReadServerSideProperties): Promise<{props: AdminEntityReadOptions}> {
+  const data = await getReadData(prisma)(params);
+  return data;
+}

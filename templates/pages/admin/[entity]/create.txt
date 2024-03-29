@@ -1,0 +1,13 @@
+import prisma from '@/prisma/prisma';
+import {getCreateView, getCreateData} from 'next-office-generator';
+import type {AdminEntityCreateServerSideProperties, AdminEntityCreateOptions} from 'next-office-generator';
+import {useRouter} from 'next/router';
+
+export default function AdminEntityCreate(props: AdminEntityCreateOptions) {
+  const router = useRouter();
+  return getCreateView(router)(props);
+}
+
+export async function getServerSideProps(params: AdminEntityCreateServerSideProperties): Promise<{props: AdminEntityCreateOptions}> {
+  return await getCreateData(prisma)(params);
+}

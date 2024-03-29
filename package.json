@@ -1,16 +1,67 @@
 {
   "name": "next-office-generator",
-  "version": "1.8.7",
-  "description": "",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "version": "2.0.33",
+  "description": "Simple and efficent backoffice for prisma models",
+  "main": "./dist/index.js",
+  "module": "./dist/index.esm.js",
   "bin": {
-    "setup-next-office-generator": "./bin/setup-next-office-generator.js"
+    "next-office-generator": "bin/setup-next-office-generator.js"
   },
-  "author": "",
-  "license": "ISC",
+  "scripts": {
+    "build": "bash scripts/library.sh",
+    "lint": "xo",
+    "lint:fix": "xo --fix",
+    "prepare": "husky",
+    "release:patch": "bash scripts/release/version.sh patch",
+    "release:minor": "bash scripts/release/version.sh minor",
+    "release:major": "bash scripts/release/version.sh major",
+    "test": "echo \"Testing...\""
+  },
+  "author": {
+    "name": "Timothée Gaultier",
+    "email": "tiimogo@gmail.com",
+    "url": "https://github.com/timoogo"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "next": "^14.1.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
   "devDependencies": {
-    "@types/node": "^20.11.30"
+    "@commitlint/cli": "^19.2.1",
+    "@commitlint/config-conventional": "^19.1.0",
+    "@types/node": "^20.11.30",
+    "@types/react": "^18.2.72",
+    "@types/react-dom": "^18.2.22",
+    "esbuild": "^0.20.2",
+    "husky": "^9.0.11",
+    "prisma": "^5.11.0",
+    "standard-version": "^9.5.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3",
+    "xo": "^0.58.0"
+  },
+  "xo": {
+    "space": 2,
+    "semicolon": true,
+    "globals": [
+      "window"
+    ],
+    "rules": {
+      "import/extensions": "off",
+      "no-alert": "off",
+      "unicorn/prefer-module": "off",
+      "import/no-anonymous-default-export": "off",
+      "n/prefer-global/process": "off",
+      "@typescript-eslint/no-floating-promises": "off",
+      "@typescript-eslint/no-unsafe-argument": "off",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unsafe-call": "off",
+      "unicorn/prefer-top-level-await": "off"
+    }
+  },
+  "lint-staged": {
+    "**/*": "xo --fix"
   }
 }

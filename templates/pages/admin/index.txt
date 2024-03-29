@@ -1,0 +1,12 @@
+import prisma from '@/prisma/prisma';
+import {getIndexView, getIndexData} from 'next-office-generator';
+import type {AdminIndexServerSideProperties, AdminIndexOptions} from 'next-office-generator';
+
+export default function AdminCreate(props: AdminIndexOptions) {
+  return getIndexView()(props);
+}
+
+export async function getServerSideProps(params: AdminIndexServerSideProperties): Promise<{props: AdminIndexOptions}> {
+  const data = await getIndexData(prisma)(params);
+  return data;
+}

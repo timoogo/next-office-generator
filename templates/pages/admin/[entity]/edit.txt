@@ -1,0 +1,14 @@
+import prisma from '@/prisma/prisma';
+import {getEditView, getEditData} from 'next-office-generator';
+import type {AdminEntityEditServerSideProperties, AdminEntityEditOptions} from 'next-office-generator';
+import {useRouter} from 'next/router';
+
+export default function AdminEntityCreate(props: AdminEntityEditOptions) {
+  const router = useRouter();
+  return getEditView(router)(props);
+}
+
+export async function getServerSideProps(params: AdminEntityEditServerSideProperties): Promise<{props: AdminEntityEditOptions}> {
+  const data = await getEditData(prisma)(params);
+  return data;
+}
