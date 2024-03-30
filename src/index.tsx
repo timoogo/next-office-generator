@@ -1,3 +1,5 @@
+import './styles/globals.css';
+
 export * from './routes/api';
 
 export * from './pages/admin/index';

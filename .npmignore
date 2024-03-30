@@ -15,3 +15,5 @@ changelog.md
 code-of-conduct.md
 licence.md
 tsconfig.json
+postcss.config.js
+tailwind.config.ts
